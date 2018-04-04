@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
      */
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEvent(MessageEvent messageEvent) {
-        Log.d("ZLog", "receive message");
+        Log.d("zzz", "receive message");
         textView.setText(messageEvent.getMessage());
         Toast.makeText(MainActivity.this, messageEvent.getMessage(), Toast.LENGTH_SHORT).show();
     }
