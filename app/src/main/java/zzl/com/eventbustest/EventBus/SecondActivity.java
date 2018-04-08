@@ -22,7 +22,6 @@ public class SecondActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 EventBus.getDefault().post(new MessageEvent("Hello...我是SecondActivity发送过来的数据"));
-                finish();
             }
         });
     }
