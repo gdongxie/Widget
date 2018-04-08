@@ -17,9 +17,10 @@ import zzl.com.eventbustest.EventBus.MessageEvent;
 import zzl.com.eventbustest.EventBus.SecondActivity;
 import zzl.com.eventbustest.RecyclerView.RecyclerViewActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView textView;
     private Button button, btn_recycler;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,21 +31,10 @@ public class MainActivity extends AppCompatActivity {
         textView = findViewById(R.id.tv);
         button = findViewById(R.id.btn);
         btn_recycler = findViewById(R.id.btn_recycler);
-
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, SecondActivity.class);
-                startActivity(intent);
-            }
-        });
-        btn_recycler.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, RecyclerViewActivity.class);
-                startActivity(intent);
-            }
-        });
+        //EventBus
+        button.setOnClickListener(this);
+        //RecyclerView
+        btn_recycler.setOnClickListener(this);
     }
 
     //订阅方法，当接收到消息时，会调用该方法
@@ -70,5 +60,23 @@ public class MainActivity extends AppCompatActivity {
         super.onDestroy();
         //Activity销毁时，解除注册，释放资源
         EventBus.getDefault().unregister(this);
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.btn:
+                intent = new Intent(MainActivity.this, SecondActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.btn_recycler:
+                intent = new Intent(MainActivity.this, RecyclerViewActivity.class);
+                startActivity(intent);
+                break;
+            default:
+                break;
+        }
+
+
     }
 }
