@@ -1,4 +1,4 @@
-package zzl.com.eventbustest;
+package zzl.com.eventbustest.EventBus;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -6,6 +6,9 @@ import android.view.View;
 import android.widget.Button;
 
 import org.greenrobot.eventbus.EventBus;
+
+import zzl.com.eventbustest.EventBus.MessageEvent;
+import zzl.com.eventbustest.R;
 
 public class SecondActivity extends AppCompatActivity {
     private Button button;

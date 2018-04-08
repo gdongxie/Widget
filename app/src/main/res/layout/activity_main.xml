@@ -1,26 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
     tools:context="zzl.com.eventbustest.MainActivity">
 
     <TextView
         android:id="@+id/tv"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:gravity="center_horizontal"
         android:text="Hello World!"
         android:textSize="18sp" />
 
     <Button
         android:id="@+id/btn"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tv"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:text="跳转到第二个Activity" />
+        android:layout_marginTop="5dp"
+        android:text="EventBuse3.0" />
 
-</RelativeLayout>
+    <Button
+        android:id="@+id/btn_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btn"
+        android:layout_marginTop="5dp"
+        android:text="RecyclerView" />
+
+</LinearLayout>

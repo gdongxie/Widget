@@ -1,4 +1,4 @@
-package zzl.com.eventbustest;
+package zzl.com.eventbustest.EventBus;
 
 /**
  * Created by ZZL on 2018/4/4.

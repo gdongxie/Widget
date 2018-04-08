@@ -13,9 +13,13 @@ import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
 
+import zzl.com.eventbustest.EventBus.MessageEvent;
+import zzl.com.eventbustest.EventBus.SecondActivity;
+import zzl.com.eventbustest.RecyclerView.RecyclerViewActivity;
+
 public class MainActivity extends AppCompatActivity {
     private TextView textView;
-    private Button button;
+    private Button button, btn_recycler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,11 +29,19 @@ public class MainActivity extends AppCompatActivity {
         EventBus.getDefault().register(this);
         textView = findViewById(R.id.tv);
         button = findViewById(R.id.btn);
+        btn_recycler = findViewById(R.id.btn_recycler);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, SecondActivity.class);
+                startActivity(intent);
+            }
+        });
+        btn_recycler.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, RecyclerViewActivity.class);
                 startActivity(intent);
             }
         });
@@ -39,13 +51,12 @@ public class MainActivity extends AppCompatActivity {
     //权限必须是public 参数只有一个 为要传递的消息类型
 
     /**
-     * @param messageEvent
-     * ThreadMode是枚举类型，有POSTING(默认)、MAIN、BACKGROUND、ASYNC
-     * POSTING:表示订阅方法运行在发送事件的线程。
-     * MAIN：表示订阅方法运行在UI线程，由于UI线程不能阻塞，因此当使用MAIN的时候，订阅方法不应该耗时过长。
-     * BACKGROUND：表示订阅方法运行在后台线程，如果发送的事件线程不是UI线程，那么就使用该线程；如果发送事件的线程是UI线程，那么新建一个后台线程来调用订阅方法。
-     * ASYNC：订阅方法与发送事件始终不在同一个线程，即订阅方法始终会使用新的线程来运行。
-     * ThreadMode默认是使用POSTING的，如果需要更改设置，可以在添加注解的时候同时为threadMode赋值。
+     * @param messageEvent ThreadMode是枚举类型，有POSTING(默认)、MAIN、BACKGROUND、ASYNC
+     *                     POSTING:表示订阅方法运行在发送事件的线程。
+     *                     MAIN：表示订阅方法运行在UI线程，由于UI线程不能阻塞，因此当使用MAIN的时候，订阅方法不应该耗时过长。
+     *                     BACKGROUND：表示订阅方法运行在后台线程，如果发送的事件线程不是UI线程，那么就使用该线程；如果发送事件的线程是UI线程，那么新建一个后台线程来调用订阅方法。
+     *                     ASYNC：订阅方法与发送事件始终不在同一个线程，即订阅方法始终会使用新的线程来运行。
+     *                     ThreadMode默认是使用POSTING的，如果需要更改设置，可以在添加注解的时候同时为threadMode赋值。
      */
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onEvent(MessageEvent messageEvent) {
