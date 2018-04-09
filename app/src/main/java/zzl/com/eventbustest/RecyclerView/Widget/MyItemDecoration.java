@@ -1,4 +1,4 @@
-package zzl.com.eventbustest.RecyclerView;
+package zzl.com.eventbustest.RecyclerView.Widget;
 
 import android.content.Context;
 import android.content.res.TypedArray;
