@@ -43,6 +43,8 @@ public class WaterFullAdapter extends RecyclerView.Adapter<WaterFullAdapter.View
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(mContext).inflate(R.layout.item_waterfull, parent, false);
         ViewHolder viewHolder = new ViewHolder(view);
+
+
         return viewHolder;
     }
 
@@ -62,6 +64,10 @@ public class WaterFullAdapter extends RecyclerView.Adapter<WaterFullAdapter.View
         return mList == null ? 0 : mList.size();
     }
 
+    public List<MeiNvBean.NewslistBean> getList() {
+        return mList;
+    }
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
         TextView textView;
         ImageView imageView;
@@ -71,9 +77,5 @@ public class WaterFullAdapter extends RecyclerView.Adapter<WaterFullAdapter.View
             textView = itemView.findViewById(R.id.text_view);
             imageView = itemView.findViewById(R.id.imageview);
         }
-    }
-
-    public List<MeiNvBean.NewslistBean> getList() {
-        return mList;
     }
 }
